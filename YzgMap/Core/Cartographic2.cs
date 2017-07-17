@@ -36,6 +36,15 @@ namespace YzgMap.Core
 
         #endregion
 
+        #region 公共方法
+
+        public Cartographic2 Clone()
+        {
+            return new Cartographic2(this.Longitude, this.Latitude);
+        }
+
+        #endregion
+
         #region 成员变量
 
         public double Longitude { get; set; }

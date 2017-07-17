@@ -37,6 +37,15 @@ namespace YzgMap.Core
 
         #endregion
 
+        #region 公共方法
+
+        public Cartesian2 Clone()
+        {
+            return new Cartesian2(this.X, this.Y);
+        }
+
+        #endregion
+
         #region 成员变量
 
         public double X { get; set; }

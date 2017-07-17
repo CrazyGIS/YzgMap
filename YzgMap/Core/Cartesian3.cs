@@ -46,11 +46,20 @@ namespace YzgMap.Core
 
         #endregion
 
+        #region 公共方法
+
+        public Cartesian3 Clone()
+        {
+            return new Cartesian3(this.X, this.Y, this.Z);
+        }
+
+        #endregion
+
         #region 成员变量
 
-        public double X { get; private set; }
-        public double Y { get; private set; }
-        public double Z { get; private set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
 
         #endregion
     }
