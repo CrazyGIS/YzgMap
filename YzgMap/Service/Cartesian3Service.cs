@@ -104,7 +104,7 @@ namespace YzgMap.Service
             checkCartesian3(first);
             checkCartesian3(second);
 
-            return this.MaximumByComponent(first, second);
+            return this.maximumByComponent(first, second);
         }
 
         public Cartesian3 MinimumByComponent(Cartesian3 first, Cartesian3 second)
