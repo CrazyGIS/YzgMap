@@ -13,17 +13,29 @@ namespace YzgMap.Core
     {
         #region 构造函数
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public Cartographic2()
         {
 
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="longitude">经度(弧度值)</param>
+        /// <param name="latitude">纬度(弧度值)</param>
         public Cartographic2(double longitude, double latitude)
         {
             this.Longitude = longitude;
             this.Latitude = latitude;
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="cartographic3"></param>
         public Cartographic2(Cartographic3 cartographic3)
         {
             if(cartographic3 == null)
@@ -47,7 +59,13 @@ namespace YzgMap.Core
 
         #region 成员变量
 
+        /// <summary>
+        /// 经度(弧度值)
+        /// </summary>
         public double Longitude { get; set; }
+        /// <summary>
+        /// 纬度(弧度值)
+        /// </summary>
         public double Latitude { get; set; }
 
         #endregion

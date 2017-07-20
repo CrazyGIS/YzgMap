@@ -24,12 +24,11 @@ namespace YzgMap.Service
             {
                 throw new ArgumentNullException("Cartographic3");
             }
-            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Longitude, -180.0, 180.0);
-            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Latitude, -90.0, 90.0);
-            YzgMath.CheckNumber_MoreThanOrEqualTo(cartographic3.Height, 0.0);
+            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Longitude, -Math.PI, Math.PI);
+            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Latitude, -Math.PI / 2, Math.PI / 2);
 
             Ellipsoid ellipsoid = CoordinateSystem.WGS84.GetEllipsoid();
-            return this.fromDegrees(cartographic3.Longitude, cartographic3.Latitude, cartographic3.Height, ellipsoid);
+            return this.fromRadians(cartographic3.Longitude, cartographic3.Latitude, cartographic3.Height, ellipsoid);
         }
 
         public Cartesian3 Cartographic3ToCartesian3(Cartographic3 cartographic3, Ellipsoid ellipsoid)
@@ -38,11 +37,10 @@ namespace YzgMap.Service
             {
                 throw new ArgumentNullException("Cartographic3");
             }
-            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Longitude, -180.0, 180.0);
-            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Latitude, -90.0, 90.0);
-            YzgMath.CheckNumber_MoreThanOrEqualTo(cartographic3.Height, 0.0);
+            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Longitude, -Math.PI, Math.PI);
+            YzgMath.CheckNumber_ButweenLeftRight_EqualLeftRight(cartographic3.Latitude, -Math.PI / 2, Math.PI / 2);
 
-            return this.fromDegrees(cartographic3.Longitude, cartographic3.Latitude, cartographic3.Height, ellipsoid);
+            return this.fromRadians(cartographic3.Longitude, cartographic3.Latitude, cartographic3.Height, ellipsoid);
         }
 
         #endregion
