@@ -53,6 +53,12 @@ namespace YzgMap.Core
             return new Cartesian3(this.X, this.Y, this.Z);
         }
 
+        override
+        public string ToString()
+        {
+            return "(" + this.X + "," + this.Y + "," + this.Z + ")";
+        }
+
         #endregion
 
         #region 成员变量

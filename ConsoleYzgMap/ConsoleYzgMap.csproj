@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YzgMap\YzgMap.csproj">
+      <Project>{4e41c20d-650b-440b-8d93-465d4fb357cf}</Project>
+      <Name>YzgMap</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

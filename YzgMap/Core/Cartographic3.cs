@@ -70,6 +70,12 @@ namespace YzgMap.Core
             return new Cartographic3(this.Longitude, this.Latitude, this.Height);
         }
 
+        override
+        public string ToString()
+        {
+            return "(" + this.Longitude + "," + this.Latitude + "," + this.Height + ")";
+        }
+
         #endregion
 
         #region 成员变量

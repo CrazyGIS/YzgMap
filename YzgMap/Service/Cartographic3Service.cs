@@ -24,12 +24,26 @@ namespace YzgMap.Service
 
         public Cartographic3 Cartesian3ToCartographic3(Cartesian3 cartesian3)
         {
-            return null;
+            if (cartesian3 == null)
+            {
+                throw new ArgumentNullException("Cartesian3");
+            }
+            Ellipsoid ellipsoid = CoordinateSystem.WGS84.GetEllipsoid();
+            return this.fromCartesian(cartesian3, ellipsoid);
         }
 
         public Cartographic3 Cartesian3ToCartographic3(Cartesian3 cartesian3, Ellipsoid ellipsoid)
         {
-            return null;
+            if (cartesian3 == null)
+            {
+                throw new ArgumentNullException("Cartesian3");
+            }
+
+            if (ellipsoid == null)
+            {
+                throw new ArgumentNullException("Ellipsoid");
+            }
+            return this.fromCartesian(cartesian3, ellipsoid);
         }
 
         #endregion
