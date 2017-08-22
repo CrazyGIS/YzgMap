@@ -6,47 +6,33 @@ using System.Threading.Tasks;
 
 namespace YzgMap.Core
 {
-    /// <summary>
-    /// 笛卡尔坐标
-    /// </summary>
-    public class Cartesian2 : ICoordinate2
+    public class Projection : ICoordinate2
     {
         #region 构造函数
 
-        public Cartesian2()
+        public Projection()
         {
 
         }
 
-        public Cartesian2(double x, double y)
+        public Projection(double x, double y)
         {
             this.X = x;
             this.Y = y;
-        }
-
-        public Cartesian2(Cartesian3 cartesian3)
-        {
-            if(cartesian3 == null)
-            {
-                throw new ArgumentNullException("cartesian3");
-            }
-
-            this.X = cartesian3.X;
-            this.Y = cartesian3.Y;
         }
 
         #endregion
 
         #region 公共方法
 
-        public Cartesian2 Clone()
+        public Projection Clone()
         {
-            return new Cartesian2(this.X, this.Y);
+            return new Projection(this.X, this.Y);
         }
 
         ICoordinate2 ICoordinate2.Clone()
         {
-            return new Cartesian2(this.X, this.Y);
+            return new Projection(this.X, this.Y);
         }
 
         #endregion
@@ -78,8 +64,6 @@ namespace YzgMap.Core
 
         public double XAxis { get; set; }
         public double YAxis { get; set; }
-        double ICoordinate2.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate2.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         #endregion
     }
 }

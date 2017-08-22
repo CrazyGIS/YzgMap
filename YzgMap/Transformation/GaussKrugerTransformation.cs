@@ -45,8 +45,8 @@ namespace YzgMap.Transformation
         /// </summary>
         /// <param name="cartographic">地理坐标</param>
         /// <param name="centerMeridian">中央经线</param>
-        /// <returns>平面坐标</returns>
-        public Cartesian2 GaussKrugerForward(Cartographic2 cartographic, double centerMeridian)
+        /// <returns>笛卡尔坐标</returns>
+        public Cartesian3 GaussKrugerForward(Cartographic3 cartographic, double centerMeridian)
         {
             double lng = cartographic.Longitude;
             double lat = cartographic.Latitude;
@@ -54,7 +54,7 @@ namespace YzgMap.Transformation
             double y = 0;
             this.BLtoxy(lng, lat, centerMeridian, out x, out y);
 
-            Cartesian2 result = new Cartesian2(x, y);
+            Cartesian3 result = new Cartesian3(x, y, cartographic.Height);
             return result;
         }
 
@@ -64,25 +64,25 @@ namespace YzgMap.Transformation
         /// <param name="cartesian">笛卡尔坐标</param>
         /// <param name="centerMeridian">中央经线</param>
         /// <returns>球面坐标</returns>
-        public Cartographic2 GaussKrugerReverse(Cartesian2 cartesian, double centerMeridian)
+        public Cartographic3 GaussKrugerReverse(Cartesian3 cartesian, double centerMeridian)
         {
             double x = cartesian.X;
             double y = cartesian.Y;
             double lng = 0;
             double lat = 0;
             this.xytoBL(x, y, centerMeridian, out lng, out lat);
-            Cartographic2 result = new Cartographic2(lng, lat);
+            Cartographic3 result = new Cartographic3(lng, lat, cartesian.Z);
             return result;
         }
 
         /// <summary>
-        /// 高斯坐标转平面坐标(y+500Km;x,y交换)
+        /// 笛卡尔坐标转投影坐标(y+500Km;x,y交换)
         /// </summary>
         /// <param name="gaussianPoint"></param>
         /// <returns></returns>
-        public Cartesian2 GaussToPlane(Cartesian2 gaussianPoint)
+        public Projection CartesianToProjection(Cartesian2 gaussianPoint)
         {
-            Cartesian2 result = new Cartesian2();
+            Projection result = new Projection();
             result.X = gaussianPoint.Y + 500000;
             result.Y = gaussianPoint.X;
 
@@ -90,15 +90,15 @@ namespace YzgMap.Transformation
         }
 
         /// <summary>
-        /// 平面坐标转高斯坐标(x,y交换;y-500Km)
+        /// 投影坐标转笛卡尔坐标(x,y交换;y-500Km)
         /// </summary>
         /// <param name="planePoint"></param>
         /// <returns></returns>
-        public Cartesian2 PlaneToGauss(Cartesian2 planePoint)
+        public Cartesian2 ProjectionToCartesian(Projection projectionPoint)
         {
             Cartesian2 result = new Cartesian2();
-            result.X = planePoint.Y;
-            result.Y = planePoint.X - 500000;
+            result.X = projectionPoint.Y;
+            result.Y = projectionPoint.X - 500000;
 
             return result;
         }

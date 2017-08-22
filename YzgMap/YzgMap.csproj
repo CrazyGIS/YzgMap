@@ -52,10 +52,13 @@
     <Compile Include="Core\Cartographic3.cs" />
     <Compile Include="Core\CoordinateType.cs" />
     <Compile Include="Core\Ellipsoid.cs" />
+    <Compile Include="Core\ICoordinate2.cs" />
+    <Compile Include="Core\ICoordinate3.cs" />
+    <Compile Include="Core\Projection.cs" />
     <Compile Include="Core\YzgMath.cs" />
     <Compile Include="Service\Cartesian3Service.cs" />
     <Compile Include="Service\Cartographic3Service.cs" />
-    <Compile Include="Service\TransformationService.cs" />
+    <Compile Include="Service\SevenParamsTransformationService.cs" />
     <Compile Include="Transformation\AngleTransformation.cs" />
     <Compile Include="Transformation\CartographicCartesianTransformation.cs" />
     <Compile Include="Transformation\GaussKrugerTransformation.cs" />

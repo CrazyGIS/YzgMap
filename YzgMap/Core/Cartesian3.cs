@@ -9,7 +9,7 @@ namespace YzgMap.Core
     /// <summary>
     /// 笛卡尔坐标(3D)
     /// </summary>
-    public class Cartesian3
+    public class Cartesian3 : ICoordinate3
     {
         #region 构造函数
 
@@ -59,13 +59,55 @@ namespace YzgMap.Core
             return "(" + this.X + "," + this.Y + "," + this.Z + ")";
         }
 
+        ICoordinate3 ICoordinate3.Clone()
+        {
+            return new Cartesian3(this.X, this.Y, this.Z);
+        }
+
         #endregion
 
         #region 成员变量
 
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Z { get; set; }
+        public double X
+        {
+            get
+            {
+                return XAxis;
+            }
+            set
+            {
+                XAxis = value;
+            }
+        }
+        public double Y
+        {
+            get
+            {
+                return YAxis;
+            }
+            set
+            {
+                YAxis = value;
+            }
+        }
+        public double Z
+        {
+            get
+            {
+                return ZAxis;
+            }
+            set
+            {
+                ZAxis = value;
+            }
+        }
+
+        public double XAxis { get; set; }
+        public double YAxis { get; set; }
+        public double ZAxis { get; set; }
+        double ICoordinate3.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate3.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate3.ZAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         #endregion
     }

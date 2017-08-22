@@ -9,7 +9,7 @@ namespace YzgMap.Core
     /// <summary>
     /// 地理坐标
     /// </summary>
-    public class Cartographic2
+    public class Cartographic2 : ICoordinate2
     {
         #region 构造函数
 
@@ -55,6 +55,11 @@ namespace YzgMap.Core
             return new Cartographic2(this.Longitude, this.Latitude);
         }
 
+        ICoordinate2 ICoordinate2.Clone()
+        {
+            return new Cartographic2(this.Longitude, this.Latitude);
+        }
+
         #endregion
 
         #region 成员变量
@@ -62,11 +67,36 @@ namespace YzgMap.Core
         /// <summary>
         /// 经度(弧度值)
         /// </summary>
-        public double Longitude { get; set; }
+        public double Longitude
+        {
+            get
+            {
+                return XAxis;
+            }
+            set
+            {
+                XAxis = value;
+            }
+        }
         /// <summary>
         /// 纬度(弧度值)
         /// </summary>
-        public double Latitude { get; set; }
+        public double Latitude
+        {
+            get
+            {
+                return YAxis;
+            }
+            set
+            {
+                YAxis = value;
+            }
+        }
+
+        public double XAxis { get; set; }
+        public double YAxis { get; set; }
+        double ICoordinate2.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate2.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         #endregion
     }

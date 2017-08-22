@@ -9,7 +9,7 @@ namespace YzgMap.Core
     /// <summary>
     /// 地理坐标
     /// </summary>
-    public class Cartographic3
+    public class Cartographic3 : ICoordinate3
     {
         #region 构造函数
 
@@ -76,6 +76,11 @@ namespace YzgMap.Core
             return "(" + this.Longitude + "," + this.Latitude + "," + this.Height + ")";
         }
 
+        ICoordinate3 ICoordinate3.Clone()
+        {
+            return new Cartographic3(this.Longitude, this.Latitude, this.Height);
+        }
+
         #endregion
 
         #region 成员变量
@@ -83,15 +88,52 @@ namespace YzgMap.Core
         /// <summary>
         /// 经度(弧度值)
         /// </summary>
-        public double Longitude { get; set; }
+        public double Longitude
+        {
+            get
+            {
+                return XAxis;
+            }
+            set
+            {
+                XAxis = value;
+            }
+        }
         /// <summary>
         /// 纬度(弧度值)
         /// </summary>
-        public double Latitude { get; set; }
+        public double Latitude
+        {
+            get
+            {
+                return YAxis;
+            }
+            set
+            {
+                YAxis = value;
+            }
+        }
         /// <summary>
         /// 高程(米)
         /// </summary>
-        public double Height { get; set; }
+        public double Height
+        {
+            get
+            {
+                return ZAxis;
+            }
+            set
+            {
+                ZAxis = value;
+            }
+        }
+
+        public double XAxis { get; set; }
+        public double YAxis { get; set; }
+        public double ZAxis { get; set; }
+        double ICoordinate3.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate3.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate3.ZAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         #endregion
     }

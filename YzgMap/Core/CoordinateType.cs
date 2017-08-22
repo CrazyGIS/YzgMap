@@ -20,6 +20,10 @@ namespace YzgMap.Core
         /// <summary>
         /// 笛卡尔坐标
         /// </summary>
-        Cartesian = 1
+        Cartesian = 1,
+        /// <summary>
+        /// 投影坐标
+        /// </summary>
+        Projection = 2
     }
 }
