@@ -68,46 +68,24 @@ namespace YzgMap.Core
 
         #region 成员变量
 
-        public double X
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        double ICoordinate3.XAxis
         {
-            get
-            {
-                return XAxis;
-            }
-            set
-            {
-                XAxis = value;
-            }
+            get => X;
+            set => X = value;
         }
-        public double Y
+        double ICoordinate3.YAxis
         {
-            get
-            {
-                return YAxis;
-            }
-            set
-            {
-                YAxis = value;
-            }
+            get => Y;
+            set => Y = value;
         }
-        public double Z
+        double ICoordinate3.ZAxis
         {
-            get
-            {
-                return ZAxis;
-            }
-            set
-            {
-                ZAxis = value;
-            }
+            get => Z;
+            set => Z = value;
         }
-
-        public double XAxis { get; set; }
-        public double YAxis { get; set; }
-        public double ZAxis { get; set; }
-        double ICoordinate3.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate3.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate3.ZAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         #endregion
     }

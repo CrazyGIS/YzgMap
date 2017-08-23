@@ -88,52 +88,30 @@ namespace YzgMap.Core
         /// <summary>
         /// 经度(弧度值)
         /// </summary>
-        public double Longitude
-        {
-            get
-            {
-                return XAxis;
-            }
-            set
-            {
-                XAxis = value;
-            }
-        }
+        public double Longitude { get; set; }
         /// <summary>
         /// 纬度(弧度值)
         /// </summary>
-        public double Latitude
-        {
-            get
-            {
-                return YAxis;
-            }
-            set
-            {
-                YAxis = value;
-            }
-        }
+        public double Latitude { get; set; }
         /// <summary>
         /// 高程(米)
         /// </summary>
-        public double Height
+        public double Height { get; set; }
+        double ICoordinate3.XAxis
         {
-            get
-            {
-                return ZAxis;
-            }
-            set
-            {
-                ZAxis = value;
-            }
+            get => Longitude;
+            set => Longitude = value;
         }
-
-        public double XAxis { get; set; }
-        public double YAxis { get; set; }
-        public double ZAxis { get; set; }
-        double ICoordinate3.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate3.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate3.ZAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate3.YAxis
+        {
+            get => Latitude;
+            set => Latitude = value;
+        }
+        double ICoordinate3.ZAxis
+        {
+            get => Height;
+            set => Height = value;
+        }
 
         #endregion
     }

@@ -80,11 +80,12 @@ namespace YzgMap.Transformation
         /// </summary>
         /// <param name="gaussianPoint"></param>
         /// <returns></returns>
-        public Projection CartesianToProjection(Cartesian2 gaussianPoint)
+        public Projection CartesianToProjection(Cartesian3 gaussianPoint)
         {
             Projection result = new Projection();
-            result.X = gaussianPoint.Y + 500000;
-            result.Y = gaussianPoint.X;
+            result.x = gaussianPoint.Y + 500000;
+            result.y = gaussianPoint.X;
+            result.z = gaussianPoint.Z;
 
             return result;
         }
@@ -94,11 +95,12 @@ namespace YzgMap.Transformation
         /// </summary>
         /// <param name="planePoint"></param>
         /// <returns></returns>
-        public Cartesian2 ProjectionToCartesian(Projection projectionPoint)
+        public Cartesian3 ProjectionToCartesian(Projection projectionPoint)
         {
-            Cartesian2 result = new Cartesian2();
-            result.X = projectionPoint.Y;
-            result.Y = projectionPoint.X - 500000;
+            Cartesian3 result = new Cartesian3();
+            result.X = projectionPoint.y;
+            result.Y = projectionPoint.x - 500000;
+            result.Z = projectionPoint.z;
 
             return result;
         }

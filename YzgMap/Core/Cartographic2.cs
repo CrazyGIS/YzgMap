@@ -67,36 +67,21 @@ namespace YzgMap.Core
         /// <summary>
         /// 经度(弧度值)
         /// </summary>
-        public double Longitude
-        {
-            get
-            {
-                return XAxis;
-            }
-            set
-            {
-                XAxis = value;
-            }
-        }
+        public double Longitude { get; set; }
         /// <summary>
         /// 纬度(弧度值)
         /// </summary>
-        public double Latitude
+        public double Latitude { get; set; }
+        double ICoordinate2.XAxis
         {
-            get
-            {
-                return YAxis;
-            }
-            set
-            {
-                YAxis = value;
-            }
+            get => Longitude;
+            set => Longitude = value;
         }
-
-        public double XAxis { get; set; }
-        public double YAxis { get; set; }
-        double ICoordinate2.XAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICoordinate2.YAxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICoordinate2.YAxis
+        {
+            get => Latitude;
+            set => Latitude = value;
+        }
 
         #endregion
     }

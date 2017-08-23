@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YzgMap.Core
 {
-    public class Projection : ICoordinate2
+    public class Projection : ICoordinate3
     {
         #region 构造函数
 
@@ -15,10 +15,11 @@ namespace YzgMap.Core
 
         }
 
-        public Projection(double x, double y)
+        public Projection(double x, double y, double z)
         {
-            this.X = x;
-            this.Y = y;
+            this.x = x;
+            this.y = y;
+            this.z = z;
         }
 
         #endregion
@@ -27,43 +28,37 @@ namespace YzgMap.Core
 
         public Projection Clone()
         {
-            return new Projection(this.X, this.Y);
+            return new Projection(this.x, this.y, this.z);
         }
 
-        ICoordinate2 ICoordinate2.Clone()
+        ICoordinate3 ICoordinate3.Clone()
         {
-            return new Projection(this.X, this.Y);
+            return new Projection(this.x, this.y, this.z);
         }
 
         #endregion
 
         #region 成员变量
 
-        public double X
-        {
-            get
-            {
-                return XAxis;
-            }
-            set
-            {
-                XAxis = value;
-            }
-        }
-        public double Y
-        {
-            get
-            {
-                return YAxis;
-            }
-            set
-            {
-                YAxis = value;
-            }
-        }
+        public double x { get; set; }
+        public double y { get; set; }
+        public double z { get; set; }
 
-        public double XAxis { get; set; }
-        public double YAxis { get; set; }
+        double ICoordinate3.XAxis
+        {
+            get => x;
+            set => x = value;
+        }
+        double ICoordinate3.YAxis
+        {
+            get => y;
+            set => y = value;
+        }
+        double ICoordinate3.ZAxis
+        {
+            get => z;
+            set => z = value;
+        }
         #endregion
     }
 }
